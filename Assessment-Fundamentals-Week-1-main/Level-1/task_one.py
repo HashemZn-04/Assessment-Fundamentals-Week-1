@@ -8,11 +8,19 @@ basket = []
 
 
 def add_to_basket(item: dict) -> list:
+    """
+    returns a basket list of dictionaries 
+    after appending a dictionary of item information
+    """
     basket.append(item)
     return basket
 
 
 def generate_receipt(basket: list) -> str:
+    """
+    returns a receipt after processing a basket list of dictionary of items
+    with product name and price information and a total.
+    """
     receipt = ""
     total = 0.0
     for item in basket:
