@@ -19,11 +19,9 @@ def count_items(basket: list) -> dict:
     counts = {}
     for item in basket:
         if item['name'] in counts:
-            counts[item['name']][0] += 1
-            counts[item['name']][1] += item['price']
+            counts[(item['name'], item['price'])] += 1
         else:
-            counts[item['name']] = [1, item['price']]
-
+            counts[(item['name'], item['price'])] = 1
     return counts
 
 
