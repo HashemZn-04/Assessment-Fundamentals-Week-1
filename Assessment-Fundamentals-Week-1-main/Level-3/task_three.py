@@ -11,21 +11,25 @@ def product_split(receipt_string: list) -> list:
     return products
 
 
-def isolate_num(products: list) -> list:
-    clean_nums = []
+def sort_nums(products: list) -> list:
+    scaled_nums = []
     for pair in products:
-        clean_num = pair[1].replace("£", "")
-        clean_num = float(clean_num)
-        clean_num = clean_num * 0.8
-        clean_nums.append(clean_num)
+        if len(pair) == 2:
+            scaled = pair[1].replace("£", "")
+            scaled = float(scaled)
+            scaled = scaled * 0.8
+            scaled_nums.append(f"{pair[0]} - {scaled}")
+    clean_total = products[:-1].split("£")
+    scaled_nums.append(clean_total)
 
-    return clean_nums
+    return scaled_nums
 
 
 def generate_invoice(receipt_string: str) -> str:
     products = product_split(receipt_string)
+    products_formatted = sort_nums(products)
 
-    return products  # return the invoice string
+    return   # return the invoice string
 
 
 if __name__ == "__main__":
