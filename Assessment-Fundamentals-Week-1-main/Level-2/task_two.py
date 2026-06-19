@@ -16,12 +16,18 @@ def add_to_basket(item: dict) -> list:
 
 
 def count_items(basket: list) -> dict:
+    """
+    returns a counts dictionary where the name and price from
+    the basket list of dictionaries are turned into a tuple, and
+    used a key for the value of the count of each item
+    """
     counts = {}
     for item in basket:
-        if item['name'] in counts:
-            counts[(item['name'], item['price'])] += 1
+        key = (item['name'], item['price'])
+        if key in counts:
+            counts[key] += 1
         else:
-            counts[(item['name'], item['price'])] = 1
+            counts[key] = 1
     return counts
 
 
@@ -32,12 +38,12 @@ def generate_receipt(basket: list) -> str:
     """
     receipt = ""
     total = 0.0
-    for name, info in count_items(basket).items():
-        if info[1] != 0:
-            receipt += f"{name} x {info[0]} - £{info[1]:.2f}\n"
-            total += info[1]
-        elif info[1] == 0:
-            receipt += f"{name} x {info[0]}- Free\n"
+    for (name, price), count in count_items(basket).items():
+        if price != 0:
+            receipt += f"{name} x {count} - £{price:.2f}\n"
+            total += price
+        elif price == 0:
+            receipt += f"{name} x {count}- Free\n"
 
     receipt += f"Total: £{total:.2f}"
     if basket == []:
