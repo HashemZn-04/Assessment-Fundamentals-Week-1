@@ -42,7 +42,14 @@ def add_to_basket(item: dict) -> list:
 
 def generate_receipt(basket: list) -> str:
     receipt = ""
-    for name, price in add_to_basket()
+    if basket == []:
+        print("Basket is empty")
+    total = 0.0
+    for item in basket:
+        if item['price'] != 0
+        receipt += f"\n{item['price']:.2f}"
+        total += {item['price']}
+
     return receipt  # return the receipt string
 
 
