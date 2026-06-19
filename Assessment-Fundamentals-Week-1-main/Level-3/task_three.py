@@ -29,7 +29,7 @@ def generate_invoice(receipt_string: str) -> str:
     products = product_split(receipt_string)
     scaled_nums, total_num = sort_nums(products)
 
-    lines = []
+    lines = ["VAT RECEIPT", ""]
 
     if scaled_nums:
         lines += scaled_nums
