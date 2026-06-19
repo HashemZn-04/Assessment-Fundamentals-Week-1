@@ -13,7 +13,8 @@ def add_to_basket(item: dict) -> list:
 
 
 def generate_receipt(basket: list) -> str:
-    return  # return the receipt string
+    receipt = ""
+    return receipt  # return the receipt string
 
 
 if __name__ == "__main__":
