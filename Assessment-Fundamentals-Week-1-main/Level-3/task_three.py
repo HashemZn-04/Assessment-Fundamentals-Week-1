@@ -4,8 +4,12 @@ Note: Do not add ANY variables to the global scope. This WILL break the tests.
 
 
 def generate_invoice(receipt_string: str) -> str:
+    splitted_string = receipt_string.split("\n")
 
-    return  # return the invoice string
+    for product in splitted_string:
+        info = product.split(" - ")
+
+    return info  # return the invoice string
 
 
 if __name__ == "__main__":
