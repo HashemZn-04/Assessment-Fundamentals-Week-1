@@ -42,6 +42,7 @@ def add_to_basket(item: dict) -> list:
 
 def generate_receipt(basket: list) -> str:
     receipt = ""
+    for name, price in add_to_basket()
     return receipt  # return the receipt string
 
 
