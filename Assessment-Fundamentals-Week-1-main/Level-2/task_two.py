@@ -8,11 +8,20 @@ basket = []
 
 def add_to_basket(item: dict) -> list:
     """
-    returns a basket list of dictionaries 
+    returns a basket list of dictionaries
     after appending a dictionary of item information
     """
     basket.append(item)
     return basket
+
+
+def count_items(basket: list) -> dict:
+    counts = {}
+    for item in basket:
+        if item['name'] in counts:
+            counts[item['name']] += 1
+        else:
+            counts[item['name']] = 1
 
 
 def generate_receipt(basket: list) -> str:
@@ -28,6 +37,10 @@ def generate_receipt(basket: list) -> str:
             total += item['price']
         elif item['price'] == 0:
             receipt += f"{item['name']} - Free\n"
+        for name in item['nam
+
+    
+
     receipt += f"Total: £{total:.2f}"
     if basket == []:
         receipt = "Basket is empty"
@@ -52,4 +65,5 @@ if __name__ == "__main__":
         "name": "Butter",
         "price": 1.20
     })
-    print(generate_receipt(basket))
+    # print(generate_receipt(basket))
+    print(basket)
