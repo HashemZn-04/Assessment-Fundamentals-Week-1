@@ -40,8 +40,8 @@ def generate_receipt(basket: list) -> str:
     total = 0.0
     for (name, price), count in count_items(basket).items():
         if price != 0:
-            receipt += f"{name} x {count} - £{price:.2f}\n"
-            total += price
+            receipt += f"{name} x {count} - £{price * count:.2f}\n"
+            total += price * count
         elif price == 0:
             receipt += f"{name} x {count}- Free\n"
 
