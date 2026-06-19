@@ -18,16 +18,21 @@ def sort_nums(products: list) -> list:
             scaled = pair[1].replace("£", "")
             scaled = float(scaled)
             scaled = scaled * 0.8
-            scaled_nums.append(f"{pair[0]} - {scaled}")
-    clean_total = products[:-1].split("£")
-    scaled_nums.append(clean_total)
+            scaled_nums.append(f"{pair[0]} - £{scaled:.2f}")
+    clean_total = products[-1][0].split("£")
+    total_num = float(clean_total[1])
 
-    return scaled_nums
+    return scaled_nums, total_num
 
 
 def generate_invoice(receipt_string: str) -> str:
     products = product_split(receipt_string)
-    products_formatted = sort_nums(products)
+    scaled_nums, total_num = sort_nums(products)
+
+    excl_vat = total_num * 0.8
+    vat = total_num * 0.2
+
+    total_line = f"Total: £{excl_vat:.2f}\nVAT: £{vat:.2f}\nTotal inc VAT: £{total_num:.2f}"
 
     return   # return the invoice string
 
