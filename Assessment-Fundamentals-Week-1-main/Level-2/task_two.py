@@ -35,12 +35,12 @@ def generate_receipt(basket: list) -> str:
     receipt = ""
     total = 0.0
     count_items(basket)
-    for item in basket():
-        if item['price'] != 0:
-            receipt += f"{item['name']} x {} - £{item['price']:.2f}\n"
-            total += item['price']
-        elif item['price'] == 0:
-            receipt += f"{item['name']} - Free\n"
+    for name, info in count_items(basket).items():
+        if info[0] != 0:
+            receipt += f"{name} x {info[1]} - £{info[0]:.2f}\n"
+            total += info[0]
+        elif info[0] == 0:
+            receipt += f"{name} x {info[1]}- Free\n"
 
     receipt += f"Total: £{total:.2f}"
     if basket == []:
