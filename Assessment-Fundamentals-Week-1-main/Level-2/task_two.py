@@ -20,8 +20,11 @@ def count_items(basket: list) -> dict:
     for item in basket:
         if item['name'] in counts:
             counts[item['name']] += 1
+            counts[item['price']] += item['price']
         else:
             counts[item['name']] = 1
+
+    return counts
 
 
 def generate_receipt(basket: list) -> str:
@@ -33,13 +36,10 @@ def generate_receipt(basket: list) -> str:
     total = 0.0
     for item in basket:
         if item['price'] != 0:
-            receipt += f"{item['name']} - £{item['price']:.2f}\n"
+            receipt += f"{item['name']} x {} - £{item['price']:.2f}\n"
             total += item['price']
         elif item['price'] == 0:
             receipt += f"{item['name']} - Free\n"
-        for name in item['nam
-
-    
 
     receipt += f"Total: £{total:.2f}"
     if basket == []:
