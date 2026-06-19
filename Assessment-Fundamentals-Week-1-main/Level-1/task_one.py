@@ -29,7 +29,9 @@ def check_valid_price(price: float) -> bool:
 
 def create_item(product: str, price: float) -> dict:
     item = {}
-
+    product = add_product()
+    price = add_price()
+    item[product] = price
     return item
 
 
