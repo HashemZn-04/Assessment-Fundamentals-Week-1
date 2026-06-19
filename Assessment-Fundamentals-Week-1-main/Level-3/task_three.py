@@ -3,13 +3,26 @@ Note: Do not add ANY variables to the global scope. This WILL break the tests.
 """
 
 
-def generate_invoice(receipt_string: str) -> str:
+def product_split(receipt_string: list) -> list:
     splitted_string = receipt_string.split("\n")
-
+    products = []
     for product in splitted_string:
-        info = product.split(" - ")
+        products.append(product.split(" - "))
+    return products
 
-    return info  # return the invoice string
+
+def isolate_num(products: list) -> list:
+    products = product_split(receipt_string)
+    for pair[1] in products:
+        pair[1].replace()
+
+    return
+
+
+def generate_invoice(receipt_string: str) -> str:
+    products = product_split(receipt_string)
+
+    return products  # return the invoice string
 
 
 if __name__ == "__main__":
