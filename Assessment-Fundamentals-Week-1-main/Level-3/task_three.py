@@ -29,12 +29,19 @@ def generate_invoice(receipt_string: str) -> str:
     products = product_split(receipt_string)
     scaled_nums, total_num = sort_nums(products)
 
+    lines = []
+
+    if scaled_nums:
+        lines += scaled_nums
+        lines.append("")
+
     excl_vat = total_num * 0.8
     vat = total_num * 0.2
 
     total_line = f"Total: £{excl_vat:.2f}\nVAT: £{vat:.2f}\nTotal inc VAT: £{total_num:.2f}"
+    lines.append(total_line)
 
-    return   # return the invoice string
+    return "\n".join(lines)  # return the invoice string
 
 
 if __name__ == "__main__":
