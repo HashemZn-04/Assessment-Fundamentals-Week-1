@@ -12,11 +12,14 @@ def product_split(receipt_string: list) -> list:
 
 
 def isolate_num(products: list) -> list:
-    products = product_split(receipt_string)
-    for pair[1] in products:
-        pair[1].replace()
+    clean_nums = []
+    for pair in products:
+        clean_num = pair[1].replace("£", "")
+        clean_num = float(clean_num)
+        clean_num = clean_num * 0.8
+        clean_nums.append(clean_num)
 
-    return
+    return clean_nums
 
 
 def generate_invoice(receipt_string: str) -> str:
